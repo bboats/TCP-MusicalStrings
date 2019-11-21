@@ -66,13 +66,9 @@ public class Input {
 		this.valor.add(this.input.nextLine());
 	}
 	
-	/*
-	 * 
-	 * 
-	 *  Adicionar getValor e pa
-	 * 
-	 * 
-	 */
+	public List<String> getValor(){
+		return this.valor;
+	}
 	
 	public static void main(String args[]) {
 		//File test
@@ -80,9 +76,10 @@ public class Input {
 		//Input classe = new Input();
 		//System.out.println("bota algo ae");
 		//classe.getLine();
-		//System.out.println(classe.valor);
+		
+		//System.out.println(classe.getValor());
 		Player player = new Player();
-		player.play("C C G G A A G");
+		player.play("I0 C C G G A A G");
 
 	}
 			

@@ -2,14 +2,16 @@ package tcp_tf;
 
 public class Volume {
 	private int valor;
-	private int step = 10; // valor de incremento/decremento
+	
+	public static final int DEFAULT_VOLUME = 31;
+	public static final int MAX_VOLUME = 127;
 	
 	public Volume() {
-		this.valor = 100;
+		this.valor = DEFAULT_VOLUME;
 	}
 	
-	public void setValor(int valor) {
-		this.valor = valor;
+	public void setValorDefault() {
+		this.valor = DEFAULT_VOLUME;
 	}
 	
 	public int getValor() {
@@ -17,10 +19,11 @@ public class Volume {
 	}
 	
 	public void increaseVolume() {
-		this.valor += step;
+		if(this.valor*2 <= MAX_VOLUME)
+			this.valor *= 2;
+		else
+			this.valor = DEFAULT_VOLUME;
 	}
 	
-	public void decreaseVolume() {
-		this.valor -= step;
-	}
+	
 }

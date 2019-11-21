@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Instrumento {
 	private int tipo; //indice do instrumento no array padrao MIDI
-	private int qtd_Oitavas,Oitava; //valores relacionados a oitavas
+	private int oitava; //valor da oitava atual
 	private String nome; //nome semantico do instrumento
 	private String instrumentsArray[]; // array padrao de nomes semanticos MIDI
 	
@@ -51,7 +51,7 @@ public class Instrumento {
 		initializeinstrumentsArray();
 		this.tipo = tipo;
 		this.nome = instrumentsArray[tipo];
-		//lidar com oitavas
+		this.oitava = 5; //oitava default
 	}
 	
 	//construtor com dado nome
@@ -64,6 +64,7 @@ public class Instrumento {
 		if(indiceInstrumento != 0) {
 			this.tipo = indiceInstrumento;
 			this.nome = nome;
+			this.oitava = 5; //oitava default
 		}	
 		//caso contrario informa o usuario de que esse instrumento nao existe e retorna
 		else
@@ -95,23 +96,33 @@ public class Instrumento {
 	}
 	
 	 //atualiza todos  parâmetros
-	String getNome() {
+	public String getNome() {
 		return this.nome;
 	}
-	
-	int getQtd_Oitavas() {
-		return this.qtd_Oitavas;
-	}
-	int getOitava() {
-		return this.Oitava;
+
+	public int getOitava() {
+		return this.oitava;
 	}
 	
+	public void setDefaultOitava() {
+		this.oitava = 5;
+	}
 	//debug? sla pode ser util depois eu so queria ver se o arquivo tava sendo lido direito
 	public void displayInstrumentsArray() {
 		System.out.println("Avaiable Instruments:");
 		//itera string por string do array, colocando ela em "temp" a cada iteracao
 		for(String temp : this.instrumentsArray)
 			System.out.println(temp);
+	}
+	
+	public void increaseOitava() {
+		if(this.oitava<9)
+			this.oitava += 1;
+	}
+	
+	public void decreaseOitava() {
+		if(this.oitava>0)
+			this.oitava -= 1;
 	}
 	
 	public static void main(String args[]) {
